@@ -41,7 +41,7 @@ materialx.color = new THREE.Color(0x340143)
 materialx.wireframe=true
 
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.02, 
+    size: 0.012, 
     map: cross, 
     transparent: true,
     blending: THREE.AdditiveBlending
