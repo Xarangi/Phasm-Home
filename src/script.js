@@ -19,12 +19,12 @@ const scene = new THREE.Scene()
 // Objects
 const geometry = new THREE.TorusGeometry( .7, .2, 16, 100 );
 const particlesGeometry = new THREE.BufferGeometry;
-const particlesCnt = 50;
+const particlesCnt = 100;
 
 const posArray = new Float32Array(particlesCnt*3);
 
 for(let i=0; i<particlesCnt*3; i++){
-    posArray[i] = (Math.random() - 0.5) * (Math.random() * 5)
+    posArray[i] = (Math.random() - 0.5) * 5
 }
 
 particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
@@ -40,7 +40,6 @@ const particlesMaterial = new THREE.PointsMaterial({
     size: 0.01, 
     map: cross, 
     transparent: true,
-    color:'blue',
     blending: THREE.AdditiveBlending
 })
 
