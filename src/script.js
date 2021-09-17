@@ -37,7 +37,7 @@ const material = new THREE.PointsMaterial({
 })
 
 const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.01, 
+    size: 0.02, 
     map: cross, 
     transparent: true,
     blending: THREE.AdditiveBlending
@@ -45,7 +45,7 @@ const particlesMaterial = new THREE.PointsMaterial({
 
 // Mesh
 const sphere = new THREE.Points(geometry,material)
-const particlesMesh = new THREE.Points(particlesGeometry, material)
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particlesMesh)
 
 // Lights
