@@ -18,6 +18,7 @@ const scene = new THREE.Scene()
 
 // Objects
 const geometry = new THREE.TorusGeometry( .7, .2, 16, 100 );
+const geometryx = new THREE.IcosahedronBufferGeometry(1,1);
 const particlesGeometry = new THREE.BufferGeometry;
 const particlesCnt = 100;
 
@@ -35,6 +36,9 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 const material = new THREE.PointsMaterial({
     size: 0.008
 })
+const materialx = new THREE.MeshStandardMaterial()
+materialx.color = new THREE.Color(0x340143)
+materialx.wireframe=true
 
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.01, 
@@ -48,6 +52,9 @@ const sphere = new THREE.Points(geometry,material)
 const particlesMesh = new THREE.Points(particlesGeometry, material)
 scene.add(particlesMesh)
 
+const spherex = new THREE.Mesh(geometryx,materialx)
+scene.add(spherex)
+
 // Lights
 
 const pointLight = new THREE.PointLight(0xffffff, 0.1)
@@ -56,6 +63,31 @@ pointLight.position.y = 3
 pointLight.position.z = 4
 scene.add(pointLight)
 
+const pointLight2 = new THREE.PointLight(0xffffff, 0.1)
+pointLight2.position.set(1.26,-0.41,-0.5)
+pointLight2.intensity = 2.15
+
+scene.add(pointLight2)
+
+const pointLight4 = new THREE.PointLight(0xffffff, 0.1)
+pointLight4.position.set(-1.26,+0.41,0.5)
+pointLight4.intensity = 2.15
+
+scene.add(pointLight4)
+
+const pointLight1 = new THREE.PointLight(0xff0000, 3)
+pointLight1.position.x = 2
+pointLight1.position.y = 3
+pointLight1.position.z = 4
+
+scene.add(pointLight1)
+const pointLight3 = new THREE.PointLight(0x808080, 2)
+pointLight3.position.x = -1.34
+pointLight3.position.y = -1
+pointLight3.position.z = 2
+pointLight3.intensity=3
+
+scene.add(pointLight3)
 /**
  * Sizes
  */
@@ -128,6 +160,11 @@ const tick = () =>
     sphere.rotation.y = .5 * elapsedTime
     particlesMesh.rotation.x = -mouseY * (elapsedTime *  0.00008)
     particlesMesh.rotation.y = mouseX * (elapsedTime * 0.00008)
+
+    spherex.rotation.y = .5 * elapsedTime
+    spherex.rotation.y += .5 * (0.001*(mouseX -  (window.innerWidth/2)) -spherex.rotation.y)
+    spherex.rotation.x += .5 * (0.001*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)
+    // spherex.position.z += .5 * (0.001*mouseY - sphere.rotation.x)
 
     // Update Orbital Controls
     // controls.update()
