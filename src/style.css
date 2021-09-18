@@ -39,7 +39,7 @@ body
 h1{
  
     font-size: 4.5rem;
-    grid-column: 5/9;
+    grid-column: 4/10;
     grid-row:6;
     text-transform: uppercase;
     color: aliceblue;
