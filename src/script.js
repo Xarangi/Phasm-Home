@@ -3,6 +3,11 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'dat.gui'
 
+
+window.onload = function() {
+    document.getElementById("my_audio").play();
+}
+
 // Texture Loader
 const loader = new THREE.TextureLoader();
 const cross = loader.load('whitedots.png');
@@ -158,14 +163,16 @@ const tick = () =>
 
     // Update objects
     sphere.rotation.y = .5 * elapsedTime
-    particlesMesh.rotation.x = -mouseY * (elapsedTime *  0.00008)
-    particlesMesh.rotation.y = mouseX * (elapsedTime * 0.00008)
+    particlesMesh.rotation.x = -mouseY * (10 *  0.00008)
+    particlesMesh.rotation.y = mouseX * (10 * 0.00008)
+    particlesMesh.rotation.x+=0.08*elapsedTime
+    particlesMesh.rotation.y+=0.08*elapsedTime
 
     spherex.rotation.y = .5 * elapsedTime
     spherex.rotation.y += .5 * (0.001*(mouseX -  (window.innerWidth/2)) -spherex.rotation.y)
     spherex.rotation.x += .5 * (0.001*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)
     if(sphere.position.z<1)
-        {spherex.position.z += .5 * (0.001009*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)}
+        {spherex.position.z += .5 * (0.001008*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)}
 
     // Update Orbital Controls
     // controls.update()
