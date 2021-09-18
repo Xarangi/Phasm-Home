@@ -1,13 +1,16 @@
 import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js'
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js'
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js'
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js'
 import * as dat from 'dat.gui'
 
 
-window.onload = function() {
-    document.getElementById("my_audio").play();
-}
-
+const so= document.querySelector('.b')
+let my=document.querySelector('#s')
+so.addEventListener('click',()=>{my.play()})
 // Texture Loader
 const loader = new THREE.TextureLoader();
 const cross = loader.load('whitedots.png');
@@ -114,6 +117,8 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    composer.setSize(sizes.width, sizes.height)
+    composer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
 /**
@@ -136,8 +141,11 @@ scene.add(camera)
 const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
+const composer = new EffectComposer(renderer);
 renderer.setSize(sizes.width, sizes.height)
+composer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+composer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 // Mouse
 document.addEventListener('mousemove', animateParticles)
@@ -149,6 +157,17 @@ function animateParticles(event){
     mouseY = event.clientY
     mouseX = event.clientX
 }
+
+const renderpass = new RenderPass(scene,camera);
+composer.addPass(renderpass);
+const bloompass = new UnrealBloomPass(1,1,1,0);
+const glitchpass = new GlitchPass()
+glitchpass.rendertoScreen=true;
+bloompass.renderToScreen=true;
+//composer.addPass(bloompass);
+composer.addPass(glitchpass)
+
+
 
 /**
  * Animate
@@ -178,7 +197,8 @@ const tick = () =>
     // controls.update()
 
     // Render
-    renderer.render(scene, camera)
+    // renderer.render(scene, camera)
+    composer.render();
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
