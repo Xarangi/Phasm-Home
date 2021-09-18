@@ -16,7 +16,7 @@ body
 {   
     /* cursor:none; */
     height: 100vh;
-    font-size:clamp(12px,1vw,40px);
+    font-size:clamp(8px,1.1vw,40px);
     font-family: 'nexa_lightregular';
 }
 
@@ -38,7 +38,7 @@ body
 }
 h1{
  
-    font-size: 5rem;
+    font-size: 4.5rem;
     grid-column: 5/9;
     grid-row:6;
     text-transform: uppercase;
@@ -61,7 +61,7 @@ h1{
     }}
 h3
 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     grid-column: 4/10;
     grid-row: 8;
     text-transform: uppercase;
