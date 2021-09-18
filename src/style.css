@@ -100,8 +100,42 @@ h3
     }
  }
  
- .fadeInLeft {
- -webkit-animation-name: fadeInLeft;
- animation-name: fadeInLeft;
- } 
+.fadeInLeft {
+-webkit-animation-name: fadeInLeft;
+animation-name: fadeInLeft;
+} 
  
+.blink{
+  font-size: 0.6rem;
+  grid-column: 4/10;
+  grid-row:12;
+  letter-spacing: 0.65rem;
+  animation: blink 3s linear infinite;
+}
+
+.launch-text{
+  font-size: 0.8rem;
+  grid-column: 4/10;
+  grid-row:9;
+  letter-spacing: 0.9rem;
+
+  animation-delay: 2s;
+  -webkit-animation-duration: 8s;
+  animation-duration: 8s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes blink {
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.5;
+  }
+  100%{
+    opacity: 1;
+  }
+  
+}
+

@@ -16,7 +16,7 @@ const loader = new THREE.TextureLoader();
 const cross = loader.load('whitedots.png');
 
 // Debug
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -149,6 +149,9 @@ composer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
 // Mouse
 document.addEventListener('mousemove', animateParticles)
+document.addEventListener('touchmove', animatetouchParticles)
+document.addEventListener('touchstart', animatetouchParticless)
+document.addEventListener('touchend', animatetouchParticlese)
 
 let mouseX = 0
 let mouseY = 0
@@ -156,6 +159,22 @@ let mouseY = 0
 function animateParticles(event){
     mouseY = event.clientY
     mouseX = event.clientX
+}
+
+function animatetouchParticles(event){
+    let touch= event.touches[0]
+    mouseY = touch.pageX - canvas.offsetLeft
+    mouseX = touch.pageY - canvas.offsetTop
+}
+function animatetouchParticless(event) {
+    let touchs = event.touches[0]
+    mouseY = touchs.pageX - canvas.offsetLeft
+    mouseX = touchs.pageY - canvas.offsetTop
+}
+function animatetouchParticlese(event) {
+    let touche = event.touches[0]
+    mouseY = touche.pageX - canvas.offsetLeft
+    mouseX = touche.pageY - canvas.offsetTop
 }
 
 const renderpass = new RenderPass(scene,camera);
