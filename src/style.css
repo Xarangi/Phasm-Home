@@ -45,19 +45,23 @@ h1{
     color: aliceblue;
     letter-spacing: 1rem;
     font-weight: 100;
-    animation: glow 1s ease-in-out infinite alternate;
-  }
+    animation: glow 2s ease-in-out alternate;
+    animation-fill-mode: forwards;
   
+  }
+
   @keyframes glow {
     from {
+      opacity:0;
       text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
     }
     to {
+      opacity:1;
       text-shadow: 0 0 15px #fff, 0 0 23px #ff4da6, 0 0 32px #ff4da6, 0 0 43px #ff4da6, 0 0 51px #ff4da6, 0 0 63px #ff4da6, 0 0 73px #ff4da6;
     }}
 h3
 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     grid-column: 4/10;
     grid-row: 8;
     text-transform: uppercase;
