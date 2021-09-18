@@ -13,7 +13,8 @@
 }
 html,
 body
-{
+{   
+    /* cursor:none; */
     height: 100vh;
     font-size:clamp(12px,1vw,40px);
     font-family: 'nexa_lightregular';

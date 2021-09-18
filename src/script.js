@@ -164,7 +164,8 @@ const tick = () =>
     spherex.rotation.y = .5 * elapsedTime
     spherex.rotation.y += .5 * (0.001*(mouseX -  (window.innerWidth/2)) -spherex.rotation.y)
     spherex.rotation.x += .5 * (0.001*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)
-    // spherex.position.z += .5 * (0.001*mouseY - sphere.rotation.x)
+    if(sphere.position.z<1)
+        {spherex.position.z += .5 * (0.001009*(-mouseY + (window.innerHeight/2)) - spherex.rotation.x)}
 
     // Update Orbital Controls
     // controls.update()
